@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+    padding: 0;
+}
 .container{
     display: flex;
     align-items: center;
@@ -5,9 +9,10 @@
     flex-direction: column;
     height: 100vh;
     background-color: rgb(141, 141, 141);
-
 }
-
+.center{
+    padding-left: 2em;
+}
 .answers{
     display: flex;
     flex-wrap: wrap;

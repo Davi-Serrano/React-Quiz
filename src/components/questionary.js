@@ -1,14 +1,5 @@
 import react from "react"
 
-const Button =  ({ answer, className }) => (
-   
-   <div className={`box ${className}`}>
-        <button> 
-            <h4>{answer}</h4>
-        </button>
-    </div>
-)
-
 
 const Quest = ({
     handleAnswer, data: { question, correct_answer, 
@@ -19,7 +10,7 @@ const Quest = ({
 
 
     return (
-    <div>
+    <div className="center">
         <div className="question">
             <h1 dangerouslySetInnerHTML = {{ __html: question}}
             
@@ -28,29 +19,19 @@ const Quest = ({
         
         <div className="answers">
             
-            <Button className={correct_answer === shuffled[0] ? 'bg' : '' }
+            {shuffled.map( answer => (
+                 
+                
+            <div className="box">
+                <button onClick={() => handleAnswer
+                        (answer)}> 
+                    <h4>{answer}</h4>
+                </button>
+            </div>
             
-            onClick={() => handleAnswer
-                (shuffled[0])}
-                 answer={shuffled[0]}/>
-            <Button className={correct_answer === shuffled[1] ? 'bg' : ''}
-            
-            onClick={() => handleAnswer
-                (shuffled[1])}
-                 answer={shuffled[1]}/>
-            <Button className={correct_answer === shuffled[2] ? 'bg' : ''}
-            
-            onClick={() => handleAnswer
-                (shuffled[2])}
-                 answer={shuffled[2]}/>
-            <Button className={correct_answer === shuffled[3] ? 'bg' : ''}
-            
-            onClick={() => handleAnswer
-                (shuffled[3])}
-                 answer={shuffled[3]}/>
-
+            ))}
         </div>
-      </div>
+    </div>
 )};
 
 export default Quest
