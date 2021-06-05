@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react"
+
+import "./App.css"
+
+import { Quest } from "./components"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+  const [questions,  setQuestions]  = useState([]);
+  
+  var api = `https://opentdb.com/api.php?amount=10`
+
+  useEffect (() => {
+      fetch(api)
+      .then( (res) => res.json ())
+        .then((data) => {
+          setQuestions(data.results);
+        });
+
+  }, []);
+  
+  return questions.length > 0 ? (
+    <div className="container">
+
+      <Quest data={questions[0]} />
+      
+
     </div>
-  );
+    ) : (
+      <div className="container"> 
+      <h1>Loading...</h1>
+      </div>
+    ) 
+  
 }
 
 export default App;
