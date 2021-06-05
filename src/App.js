@@ -18,11 +18,15 @@ function App() {
         });
 
   }, []);
+
+  const handleAnswer = (answer) => {
+    //check for the Answer
+  }
   
   return questions.length > 0 ? (
     <div className="container">
 
-      <Quest data={questions[0]} />
+      <Quest data={questions[0]} handleAnswer={handleAnswer} />
       
 
     </div>
