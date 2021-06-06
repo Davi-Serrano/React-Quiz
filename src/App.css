@@ -65,3 +65,7 @@ h4{
 .cancel{
     background-color: red;
 }
+p{
+    color: green;
+    font-family: cursive;
+}

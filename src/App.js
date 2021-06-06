@@ -1,3 +1,4 @@
+import { set } from "mongoose";
 import { useEffect, useState } from "react"
 
 
@@ -10,55 +11,58 @@ function App() {
   const [currentIndex, setCurrentIndex ] = useState(0)
   const [ score, setScore] = useState(0);
   const [endGame, setGameEnd] = useState(false)
-  const [ ap, setAp] = useState(0)
+  const [ questionsNumber, setQuestionsNumber] = useState(0)
+  const [ saveQuestion, setSaveQuestion] = useState([]);
+  const [ saveAnswer, setSaveAnswer] = useState([]);
    
   
 
 
-var api = `https://opentdb.com/api.php?amount=${ap}`
+var api = `https://opentdb.com/api.php?amount=${questionsNumber}`
   
 
 function clicar(){
-  var ox = document.getElementById("qnum").value
+  var num = document.getElementById("qnum").value
 
-      setAp(ox)
+  setQuestionsNumber(num)
 
 }
-
-
   useEffect (() => {
-       fetch(api)
-      .then( (res) => res.json ())
-        .then((data) => {
-          setQuestions(data.results);
-        });
-
-  }, [ap]);
-
+  fetch(api)
+  .then( (res) => res.json ())
+    .then((data) => {
+      setQuestions(data.results);
+    }); 
+  }, [questionsNumber]);
+  
+ 
   const handleAnswer = (answer) => {
+    setSaveQuestion([...questions])
+    
+
     const newIndex = currentIndex + 1
     setCurrentIndex(newIndex);
-
+    
     if(answer === questions[currentIndex].
       correct_answer){
         setScore(score + 1)    
       }
-    if(newIndex >= questions.length){
+      if(newIndex >= questions.length){
         setGameEnd(true);
+      }
     }
+    
+    console.log(saveAnswer)
 
-
-  }
   function pagInitial(){
           window.location = "/"
   }
-
-  return  ap < 1 ? (
+  return  questionsNumber < 1 ? (
     <div className="init">
 
           <label id="label">Question do you want answer?</label>   
-          <input type="nummber" id="qnum" placeholder="escreva seu numero"></input>
-          <div class="lo" onClick={clicar}> 
+          <input type="number" id="qnum" requried min="1" placeholder="escreva seu numero"></input>
+          <div className="lo" onClick={clicar}> 
               Clique
 
           </div>
@@ -68,11 +72,23 @@ function clicar(){
         <div className="container">
           <h1>  Your Score is {score} </h1>
           
-          <h2> You wrong {ap - score}</h2>
+          <h2> You wrong {questionsNumber - score}</h2>
           
-          <div class="lo" onClick={pagInitial}> 
-                Clique
+        <ul>
+          {saveQuestion.map(  nquest => (
+           
+           <div key={nquest.correct_answer}>
+           <li  dangerouslySetInnerHTML = {{__html: nquest.question}} />
+           <p> {nquest.correct_answer}</p> 
+                         
+            </div>
+      
+          ))}
+        </ul>
 
+
+          <div className="lo" onClick={pagInitial}> 
+                Clique
           </div>
           
         </div>
