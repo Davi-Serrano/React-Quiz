@@ -65,13 +65,16 @@ function clicar(){
     </div>
     ) : (  endGame ? (
 
-        <div className="container"><h1>  Your Score is {score} </h1>
-        
-        <div class="lo" onClick={pagInitial}> 
-              Clique
+        <div className="container">
+          <h1>  Your Score is {score} </h1>
+          
+          <h2> You wrong {ap - score}</h2>
+          
+          <div class="lo" onClick={pagInitial}> 
+                Clique
 
           </div>
-        
+          
         </div>
   
         ) : (
