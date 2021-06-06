@@ -1,4 +1,3 @@
-import { set } from "mongoose";
 import { useEffect, useState } from "react"
 
 
@@ -13,7 +12,7 @@ function App() {
   const [endGame, setGameEnd] = useState(false)
   const [ questionsNumber, setQuestionsNumber] = useState(0)
   const [ saveQuestion, setSaveQuestion] = useState([]);
-  const [ saveAnswer, setSaveAnswer] = useState([]);
+  
    
   
 
@@ -37,22 +36,22 @@ function clicar(){
   
  
   const handleAnswer = (answer) => {
+    
     setSaveQuestion([...questions])
     
-
     const newIndex = currentIndex + 1
     setCurrentIndex(newIndex);
     
     if(answer === questions[currentIndex].
       correct_answer){
-        setScore(score + 1)    
+        setScore(score + 1)
       }
       if(newIndex >= questions.length){
         setGameEnd(true);
       }
+    
     }
     
-    console.log(saveAnswer)
 
   function pagInitial(){
           window.location = "/"
@@ -60,8 +59,8 @@ function clicar(){
   return  questionsNumber < 1 ? (
     <div className="init">
 
-          <label id="label">Question do you want answer?</label>   
-          <input type="number" id="qnum" requried min="1" placeholder="escreva seu numero"></input>
+          <label id="label">How many questions do you want to answer?</label>   
+          <input type="number" id="qnum" min="1" placeholder="write a number"></input>
           <div className="lo" onClick={clicar}> 
               Clique
 
@@ -69,8 +68,10 @@ function clicar(){
     </div>
     ) : (  endGame ? (
 
-        <div className="container">
-          <h1>  Your Score is {score} </h1>
+        <div className="endcontent">
+          
+          
+          <h1>  Your Score was {score} </h1>
           
           <h2> You wrong {questionsNumber - score}</h2>
           
@@ -79,7 +80,7 @@ function clicar(){
            
            <div key={nquest.correct_answer}>
            <li  dangerouslySetInnerHTML = {{__html: nquest.question}} />
-           <p> {nquest.correct_answer}</p> 
+          <span> Correct answer: <p> {nquest.correct_answer}</p> </span>
                          
             </div>
       
@@ -88,7 +89,7 @@ function clicar(){
 
 
           <div className="lo" onClick={pagInitial}> 
-                Clique
+                Back to Home
           </div>
           
         </div>

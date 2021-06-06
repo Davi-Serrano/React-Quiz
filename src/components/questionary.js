@@ -9,6 +9,7 @@ const Quest = ({
 function cancel (){
     window.location = "/"
 }
+
     return (
     <div className="center">
         <div className="question">
@@ -22,7 +23,7 @@ function cancel (){
             {shuffled.map( answer => (
                  
                 
-            <div className="box">
+            <div  className="box">
                 <button onClick={() => handleAnswer
                         (answer)}> 
                     <h4>{answer}</h4>
