@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
 }
-.container{
+.container, .init{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,4 +37,31 @@ h4{
 }
 .bg{
     background-color: purple;
+}
+#label{
+    font-size: 36px;
+    margin-bottom: 2em;
+}
+#qnum{
+    height: 2em;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    padding: 1em;
+}
+.lo, .cancel{
+    margin-top: 2em;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: black;
+    color: white;
+    transition: ease-in;
+}
+.lo:hover{
+    background-color: rgb(158, 156, 156);
+    transform: translateY(-3px);
+}
+.cancel{
+    background-color: red;
 }

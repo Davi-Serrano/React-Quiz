@@ -1,6 +1,3 @@
-import react from "react"
-
-
 const Quest = ({
     handleAnswer, data: { question, correct_answer, 
     incorrect_answers },
@@ -8,7 +5,10 @@ const Quest = ({
         const shuffled = [correct_answer, ...
         incorrect_answers].sort(() => Math.random() - 0.5);
 
-
+        
+function cancel (){
+    window.location = "/"
+}
     return (
     <div className="center">
         <div className="question">
@@ -30,6 +30,9 @@ const Quest = ({
             </div>
             
             ))}
+                <div onClick={cancel} className="cancel"> 
+                    Cancel
+                </div>
         </div>
     </div>
 )};

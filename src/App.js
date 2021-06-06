@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Input } from "reactstrap";
+
 
 import "./App.css"
 
@@ -10,8 +10,21 @@ function App() {
   const [currentIndex, setCurrentIndex ] = useState(0)
   const [ score, setScore] = useState(0);
   const [endGame, setGameEnd] = useState(false)
+  const [ ap, setAp] = useState(0)
    
-  var api = `https://opentdb.com/api.php?amount=10`
+  
+
+
+var api = `https://opentdb.com/api.php?amount=${ap}`
+  
+
+function clicar(){
+  var ox = document.getElementById("qnum").value
+
+      setAp(ox)
+
+}
+
 
   useEffect (() => {
        fetch(api)
@@ -20,7 +33,7 @@ function App() {
           setQuestions(data.results);
         });
 
-  }, []);
+  }, [ap]);
 
   const handleAnswer = (answer) => {
     const newIndex = currentIndex + 1
@@ -36,26 +49,49 @@ function App() {
 
 
   }
-  
-  return  
-  
-  endGame ? (
+  function pagInitial(){
+          window.location = "/"
+  }
 
-        <div className="container"><h1>  Your Score is {score} </h1></div>
-  ) : (
-    questions.length > 0 ? (
-    <div className="container">
+  return  ap < 1 ? (
+    <div className="init">
 
-      
+          <label id="label">Question do you want answer?</label>   
+          <input type="nummber" id="qnum" placeholder="escreva seu numero"></input>
+          <div class="lo" onClick={clicar}> 
+              Clique
+
+          </div>
+    </div>
+    ) : (  endGame ? (
+
+        <div className="container"><h1>  Your Score is {score} </h1>
+        
+        <div class="lo" onClick={pagInitial}> 
+              Clique
+
+          </div>
+        
+        </div>
+  
+        ) : (
+   
+          questions.length > 0 ? (
+    <div className="container">   
+  
        <Quest data={questions[currentIndex]}
        handleAnswer={handleAnswer} />
        
     </div>
-    ) : (
-      <div className="container"> 
+  
+  ) : (
+  
+     <div className="container"> 
       <h1>Loading...</h1>
+      
       </div>
-    ));
+  
+    )));
 
   
 }
