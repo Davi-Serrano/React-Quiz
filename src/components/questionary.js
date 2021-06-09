@@ -1,10 +1,12 @@
 const Quest = ({
+    
     handleAnswer, data: { question, correct_answer, 
-    incorrect_answers },
-}) => { 
+        incorrect_answers },
+    }) => { 
         const shuffled = [correct_answer, ...
-        incorrect_answers].sort(() => Math.random() - 0.5);
-
+            incorrect_answers].sort(() => Math.random() - 0.5);
+            
+            
         
 function cancel (){
     window.location = "/"

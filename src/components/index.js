@@ -1,3 +1,4 @@
 import Quest from "./questionary"
+import Home from "./home"
 
-export { Quest };  
+export { Quest, Home };  

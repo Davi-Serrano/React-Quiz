@@ -5,6 +5,7 @@ import "./App.css"
 
 import { Quest } from "./components"
 
+
 function App() {
   const [questions,  setQuestions]  = useState([]);
   const [currentIndex, setCurrentIndex ] = useState(0)
@@ -13,22 +14,22 @@ function App() {
   const [ questionsNumber, setQuestionsNumber] = useState(0)
   const [ saveQuestion, setSaveQuestion] = useState([]);
   
+  var wrong = questionsNumber - score
    
   
-
-
-var api = `https://opentdb.com/api.php?amount=${questionsNumber}`
   
-
-function clicar(){
-  var num = document.getElementById("qnum").value
-
-  setQuestionsNumber(num)
-
-}
+  var api = `https://opentdb.com/api.php?amount=${questionsNumber}`
+  
+  
+  function clicar(){
+    var num = document.getElementById("qnum").value
+    
+    setQuestionsNumber(num)
+    
+  }
   useEffect (() => {
-  fetch(api)
-  .then( (res) => res.json ())
+    fetch(api)
+    .then( (res) => res.json ())
     .then((data) => {
       setQuestions(data.results);
     }); 
@@ -36,6 +37,8 @@ function clicar(){
   
  
   const handleAnswer = (answer) => {
+    
+    
     
     setSaveQuestion([...questions])
     
@@ -49,9 +52,17 @@ function clicar(){
       if(newIndex >= questions.length){
         setGameEnd(true);
       }
-    
+
+
+      //Save in localStroage
+      var questions_json = JSON.stringify(questions)
+      
+      localStorage.setItem("question", questions_json)
+      localStorage.setItem("socre", score)
+      localStorage.setItem("wrong", wrong)
+
     }
-    
+  
 
   function pagInitial(){
           window.location = "/"
@@ -65,6 +76,10 @@ function clicar(){
               Clique
 
           </div>
+          <div className="lo" > 
+              Last Quiz Scores
+
+          </div>
     </div>
     ) : (  endGame ? (
 
@@ -73,7 +88,7 @@ function clicar(){
           
           <h1>  Your Score was {score} </h1>
           
-          <h2> You wrong {questionsNumber - score}</h2>
+          <h2> You wrong{wrong}</h2>
           
         <ul>
           {saveQuestion.map(  nquest => (
