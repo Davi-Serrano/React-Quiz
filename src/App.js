@@ -58,7 +58,7 @@ function App() {
       var questions_json = JSON.stringify(questions)
       
       localStorage.setItem("question", questions_json)
-      localStorage.setItem("socre", score)
+      localStorage.setItem("score", score)
       localStorage.setItem("wrong", wrong)
 
     }
@@ -67,16 +67,63 @@ function App() {
   function pagInitial(){
           window.location = "/"
   }
+
+ function close(){
+   document.getElementById("Relatory").style.display = `none`
+  }
+function show(){
+  document.getElementById("Relatory").style.display = `block`
+}
+
+  
+
+var lala = JSON.parse(localStorage.getItem("question"))
+
+
+
+
   return  questionsNumber < 1 ? (
     <div className="init">
+
+
+
+
+
+            <div id="Relatory">
+
+              <h2>
+                    Your last Score: {localStorage.getItem("score")}
+              </h2> 
+              <h2>
+                    You wrong: {localStorage.getItem("wrong")}
+              </h2> 
+
+                    <ul>
+                      { lala.map(  nquest => (
+                      
+                      <div key={nquest.correct_answer}>
+                      <li  dangerouslySetInnerHTML = {{__html: nquest.question}} />
+                      <span> Correct answer: <p> {nquest.correct_answer}</p> </span>
+  
+                    </div>
+      
+                         ))}
+                     </ul>
+
+                     <div className="lo ba" id="close" onClick={close}> 
+                       close
+                     </div>
+                     
+              
+            </div>
 
           <label id="label">How many questions do you want to answer?</label>   
           <input type="number" id="qnum" min="1" placeholder="write a number"></input>
           <div className="lo" onClick={clicar}> 
-              Clique
+              Start
 
           </div>
-          <div className="lo" > 
+          <div className="lo" onClick={show}> 
               Last Quiz Scores
 
           </div>

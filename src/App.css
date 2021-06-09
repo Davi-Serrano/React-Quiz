@@ -2,6 +2,15 @@ body{
     margin: 0;
     padding: 0;
 }
+#Relatory{
+    background-color: rgb(141, 141, 141);
+    width: 800px;
+    height: auto;
+    position: absolute;
+    left: 25%;
+    top: 1%;
+    display:none;
+}
 .container, .init{
     display: flex;
     align-items: center;
