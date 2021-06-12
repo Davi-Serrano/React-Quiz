@@ -36,10 +36,10 @@ function App() {
   }, [questionsNumber]);
   
  
-  const handleAnswer = (answer) => {
+  const handleAnswer = (...answer) => {
     
-    
-    
+      console.log(handleAnswer)
+
     setSaveQuestion([...questions])
     
     const newIndex = currentIndex + 1
@@ -75,19 +75,10 @@ function show(){
   document.getElementById("Relatory").style.display = `block`
 }
 
-  
-
-var lala = JSON.parse(localStorage.getItem("question"))
-
-
-
+var relatory = JSON.parse(localStorage.getItem("question"))
 
   return  questionsNumber < 1 ? (
     <div className="init">
-
-
-
-
 
             <div id="Relatory">
 
@@ -99,7 +90,7 @@ var lala = JSON.parse(localStorage.getItem("question"))
               </h2> 
 
                     <ul>
-                      { lala.map(  nquest => (
+                      { relatory.map(  nquest => (
                       
                       <div key={nquest.correct_answer}>
                       <li  dangerouslySetInnerHTML = {{__html: nquest.question}} />
