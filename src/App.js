@@ -132,8 +132,8 @@ var relatory = JSON.parse(localStorage.getItem("question"))
           {saveQuestion.map(  nquest => (
            
            <div key={nquest.correct_answer}>
-           <li  dangerouslySetInnerHTML = {{__html: nquest.question}} />
-          <span> Correct answer: <p> {nquest.correct_answer}</p> </span>
+              <li  dangerouslySetInnerHTML = {{__html: nquest.question}} />
+              <span> Correct answer: <p> {nquest.correct_answer}</p> </span>
                          
             </div>
       
@@ -160,9 +160,10 @@ var relatory = JSON.parse(localStorage.getItem("question"))
   ) : (
   
      <div className="container"> 
+     
       <h1>Loading...</h1>
       
-      </div>
+    </div>
   
     )));
 

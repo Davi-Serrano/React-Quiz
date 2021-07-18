@@ -3,7 +3,7 @@ body{
     padding: 0;
 }
 #Relatory{
-    background-color: rgb(141, 141, 141);
+    background-color: #b109b1;
     width: 800px;
     height: auto;
     position: absolute;
@@ -17,7 +17,8 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    background-color: rgb(141, 141, 141);
+    background-color: #AF42AE;
+    color: white;
 }
 .center{
     padding-left: 2em;
@@ -35,11 +36,11 @@ body{
 }
 button{
     width: 90%;
-    background-color: black;
+    background-color: #82204a;
     border-radius: 20px;
 }
 h4{
-    color: blue;
+    color: white;
 }
 .box :hover{
     background-color: rgb(27, 27, 29);
@@ -54,8 +55,8 @@ h4{
 #qnum{
     height: 2em;
     color: white;
-    background-color: black;
-    border: 1px solid white;
+    border: none;
+    background-color: #000000;
     padding: 1em;
 }
 .lo, .cancel{
@@ -63,24 +64,28 @@ h4{
     border: 1px solid white;
     border-radius: 15px;
     padding: 1em;
-    background-color: black;
+    background-color: #b109b1;
     color: white;
     transition: ease-in;
 }
 .lo:hover{
-    background-color: rgb(158, 156, 156);
+    background-color: #e254e2);
     transform: translateY(-3px);
 }
 .cancel{
-    background-color: red;
+    background-color:  #b109b1;
 }
 li{
     list-style: none;
     font-size: 20px;
     font-weight: bolder;
+    color: white;
+}
+span{
+    color:#330633;
 }
 p{
-    color: green;
+    color:white;
     font-family: cursive;
 }
 span{
@@ -93,6 +98,6 @@ span{
         justify-content: center;
         flex-direction: column;
         height: 100%;
-        background-color: rgb(141, 141, 141);
+        background-color: #b109b1;;
  
 }
