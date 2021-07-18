@@ -69,7 +69,7 @@ h4{
     transition: ease-in;
 }
 .lo:hover{
-    background-color: #e254e2);
+    background-color: #e254e2;
     transform: translateY(-3px);
 }
 .cancel{
