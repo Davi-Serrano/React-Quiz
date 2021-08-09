@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 
-
 import "./App.css"
 
 import { Quest } from "./components"
@@ -13,6 +12,7 @@ function App() {
   const [endGame, setGameEnd] = useState(false)
   const [ questionsNumber, setQuestionsNumber] = useState(0)
   const [ saveQuestion, setSaveQuestion] = useState([]);
+  const [ anser, setAnser ] = useState([]);
   
   var wrong = questionsNumber - score
    
@@ -38,7 +38,7 @@ function App() {
  
   const handleAnswer = (...answer) => {
     
-      console.log(handleAnswer)
+      setAnser( anser +  `, ${answer}` )
 
     setSaveQuestion([...questions])
     
@@ -61,7 +61,9 @@ function App() {
       localStorage.setItem("score", score)
       localStorage.setItem("wrong", wrong)
 
+      
     }
+    console.log(anser)
   
 
   function pagInitial(){
